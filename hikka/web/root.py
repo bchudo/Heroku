@@ -263,7 +263,7 @@ class Web:
         self._qr_login = await client.qr_login()
         self._qr_task = asyncio.ensure_future(self._qr_login_poll())
 
-        return web.Response(body=self._qr_login.url)
+        return None
 
     async def get_qr_url(self, request: web.Request) -> web.Response:
         if not self._check_session(request):

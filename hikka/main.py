@@ -446,6 +446,7 @@ class Hikka:
                 os.listdir(BASE_DIR),
             )
         ]
+        self.sessions = [self.sessions[0]]
 
     def _get_api_token(self):
         """Get API Token from disk or environment"""

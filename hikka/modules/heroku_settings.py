@@ -774,46 +774,10 @@ class HerokuSettingsMod(loader.Module):
                 )
 
             return
-
-        if not main.hikka.web:
-            main.hikka.web = core.Web(
-                data_root=main.BASE_DIR,
-                api_token=main.hikka.api_token,
-                proxy=main.hikka.proxy,
-                connection=main.hikka.conn,
-            )
-            await main.hikka.web.add_loader(self._client, self.allmodules, self._db)
-            await main.hikka.web.start_if_ready(
-                len(self.allclients),
-                main.hikka.arguments.port,
-                proxy_pass=main.hikka.arguments.proxy_pass,
-            )
-
-        if force:
-            form = message
-            await form.edit(
-                self.strings("opening_tunnel"),
-                reply_markup={"text": "🕔 Wait...", "data": "empty"},
-                photo=(
-                    "https://imgur.com/a/MQJGI0w.png"
-                ),
-            )
-        else:
-            form = await self.inline.form(
-                self.strings("opening_tunnel"),
-                message=message,
-                reply_markup={"text": "🕔 Wait...", "data": "empty"},
-                photo=(
-                    "https://imgur.com/a/MQJGI0w.png"
-                ),
-            )
-
-        url = await main.hikka.web.get_url(proxy_pass=True)
-
         await form.edit(
-            self.strings("tunnel_opened"),
-            reply_markup={"text": self.strings("web_btn"), "url": url},
-            photo="https://imgur.com/a/lgmzCpj.png",
+            "Нельзя. Всё равно будет работать только одна сессия",
+            reply_markup={"text": "Пусто", "data": "empty"},
+            photo="https://imgur.com/a/lgmzCpj"
         )
 
     def _get_all_IDM(self, module: str):
