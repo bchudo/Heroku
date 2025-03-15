@@ -35,7 +35,7 @@ class Quickstart(loader.Module):
             [
                 {
                     "text": self.strings("btn_support"),
-                    "url": "https://t.me/Astinhost_support",
+                    "url": "https://t.me/AstinHostChat",
                 }
             ],
         ] + utils.chunks(
